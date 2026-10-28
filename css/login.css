@@ -1,0 +1,210 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-color: var(--fundo);
+    color: var(--texto);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.cabecalho-login {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 76px;
+    padding: 14px max(24px, calc((100% - 1280px) / 2));
+    background-color: var(--azul-fechado);
+}
+
+.marca {
+    color: var(--texto-inverso);
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -1.2px;
+    text-decoration: none;
+}
+
+.marca::first-letter {
+    color: var(--laranja);
+}
+
+.voltar-loja {
+    padding: 9px 13px;
+    border: 1px solid var(--texto-inverso);
+    border-radius: 4px;
+    color: var(--texto-inverso);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color var(--tempo-curto) var(--movimento), color var(--tempo-curto) var(--movimento);
+}
+
+.voltar-loja:hover {
+    background-color: var(--texto-inverso);
+    color: var(--azul-fechado);
+}
+
+.voltar-loja:focus-visible,
+.marca:focus-visible {
+    outline: 2px solid var(--laranja);
+    outline-offset: 4px;
+}
+
+.pagina-login {
+    display: grid;
+    flex: 1;
+    place-items: center;
+    padding: 56px 20px;
+}
+
+.cartao-login {
+    width: min(100%, 440px);
+    padding: 38px;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    background-color: var(--superficie);
+    box-shadow: var(--sombra-card);
+    animation: entrada-suave var(--tempo-entrada) var(--movimento) backwards;
+}
+
+.login-introducao {
+    margin-bottom: 28px;
+}
+
+.login-etiqueta {
+    color: var(--laranja);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.login-introducao h1 {
+    margin: 10px 0 8px;
+    color: var(--azul-fechado);
+    font-size: clamp(1.7rem, 5vw, 2rem);
+    line-height: 1.2;
+}
+
+.login-introducao p {
+    margin: 0;
+    color: var(--texto-suave);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.formulario-login {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.campo-login {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo-login label {
+    color: var(--texto);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.campo-login input {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 14px;
+    border: 1px solid var(--borda);
+    border-radius: 4px;
+    background-color: var(--superficie-clara);
+    color: var(--texto);
+    font: inherit;
+    transition: border-color var(--tempo-curto) var(--movimento), box-shadow var(--tempo-curto) var(--movimento), background-color var(--tempo-curto) var(--movimento);
+}
+
+.campo-login input::placeholder {
+    color: var(--texto-suave);
+}
+
+.campo-login input:hover {
+    border-color: var(--texto-suave);
+}
+
+.campo-login input:focus {
+    border-color: var(--borda-foco);
+    outline: none;
+    background-color: var(--superficie);
+    box-shadow: 0 0 0 3px var(--laranja-fraco);
+}
+
+.formulario-login button {
+    min-height: 48px;
+    margin-top: 4px;
+    padding: 12px 18px;
+    border: 0;
+    border-radius: 4px;
+    background-color: var(--laranja);
+    color: var(--texto-inverso);
+    cursor: pointer;
+    font: inherit;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    transition: background-color var(--tempo-curto) var(--movimento), transform var(--tempo-curto) var(--movimento), box-shadow var(--tempo-curto) var(--movimento);
+}
+
+.formulario-login button:hover {
+    transform: translateY(-1px);
+    background-color: var(--laranja-hover);
+    box-shadow: var(--sombra-hover);
+}
+
+.formulario-login button:focus-visible {
+    outline: 2px solid var(--azul-fechado);
+    outline-offset: 3px;
+}
+
+.login-alerta {
+    margin-top: 20px;
+    padding: 12px 14px;
+    border: 1px solid var(--alerta);
+    border-radius: 4px;
+    background-color: var(--superficie-clara);
+}
+
+.login-alerta p {
+    margin: 0;
+    color: var(--alerta) !important;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 520px) {
+    .cabecalho-login {
+        min-height: 66px;
+        padding: 12px 18px;
+    }
+
+    .marca {
+        font-size: 1.55rem;
+    }
+
+    .pagina-login {
+        align-items: start;
+        padding: 32px 16px;
+    }
+
+    .cartao-login {
+        padding: 28px 22px;
+    }
+}

@@ -1,38 +1,15 @@
-<?php include "./data/produtos.php" ?>
+<?php
+session_start();
 
-<!DOCTYPE html>
-<html lang="pt-br">
+if (isset($_SESSION["usuario_id"])) {
+    if ((int) $_SESSION["usuario_id"] === 9 && ($_SESSION["usuario_email"] ?? "") === "vitor@gmail.com") {
+        header("Location: /listar-usuarios.php");
+    } else {
+        header("Location: /produtos.php");
+    }
+    exit();
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Loja | Tecnologia para o dia a dia</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="./css/footer.css">
-</head>
-
-<body>
-    <?php include "./view/header.php" ?>
-    <section class="destaque">
-        <p class="chamada">TECNOLOGIA PARA SUA ROTINA</p>
-        <h2>Seu próximo favorito<br>está aqui.</h2>
-        <p class="texto-destaque">Encontre produtos para trabalhar, estudar e aproveitar seus momentos.</p>
-        <a href="#produtos">Explorar produtos <span aria-hidden="true">↓</span></a>
-    </section>
-    <main class="produtos" id="produtos" aria-label="Produtos disponíveis">
-        <?php foreach ($produtos as $produto): ?>
-            <article class="produto">
-                <img src="<?= htmlspecialchars($produto->imagem) ?>" alt="<?= htmlspecialchars($produto->nome) ?>" loading="lazy" decoding="async">
-                <p class="categoria"><?= htmlspecialchars($produto->categoria) ?></p>
-                <h2><?= htmlspecialchars($produto->nome) ?></h2>
-                <p><?= htmlspecialchars($produto->descricao) ?></p>
-                <p class="preco">R$ <?= number_format($produto->preco, 2, ',', '.') ?></p>
-                <a href="./produto.php?id=<?= $produto->id ?>" aria-label="Ver detalhes de <?= htmlspecialchars($produto->nome) ?>">Ver produto</a>
-            </article>
-        <?php endforeach; ?>
-    </main>
-    <?php include "./view/footer.php" ?>
-</body>
-
-</html>
+header("Location: /login.php");
+exit();
+?>

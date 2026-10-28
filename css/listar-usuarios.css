@@ -1,0 +1,225 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-color: var(--fundo);
+    color: var(--texto);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.usuarios {
+    flex: 1;
+    width: calc(100% - 48px);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 0 64px;
+}
+
+.usuarios-cabecalho {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.usuarios-legenda {
+    margin: 0 0 8px;
+    color: var(--laranja);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.usuarios-cabecalho h1 {
+    margin: 0;
+    color: var(--azul-fechado);
+    font-size: 2rem;
+}
+
+.usuarios-total {
+    padding: 8px 12px;
+    border: 1px solid var(--borda);
+    border-radius: 4px;
+    background-color: var(--superficie);
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+}
+
+.tabela-container {
+    overflow: hidden;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    background-color: var(--superficie);
+    box-shadow: var(--sombra-card);
+    animation: entrada-suave var(--tempo-entrada) var(--movimento) backwards;
+    transition: box-shadow var(--tempo-padrao) var(--movimento);
+}
+
+.tabela-container:hover {
+    box-shadow: var(--sombra-hover);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+thead {
+    background-color: var(--azul-fechado);
+}
+
+th,
+td {
+    padding: 16px 20px;
+}
+
+th {
+    color: var(--texto-inverso);
+    font-size: 0.75rem;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+}
+
+td {
+    border-top: 1px solid var(--borda);
+    color: var(--texto);
+    font-size: 0.95rem;
+    transition: background-color var(--tempo-curto) var(--movimento);
+}
+
+tbody tr {
+    transition: background-color var(--tempo-curto) var(--movimento);
+}
+
+tbody tr:hover {
+    background-color: var(--laranja-fraco);
+}
+
+.usuario-id {
+    color: var(--texto-suave);
+    font-weight: 700;
+}
+
+.usuarios-vazio {
+    padding: 32px;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    background-color: var(--superficie);
+    color: var(--texto-suave);
+    text-align: center;
+}
+
+.botao-editar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 84px;
+    min-height: 38px;
+    padding: 8px 12px;
+    border: 1px solid var(--laranja);
+    border-radius: 4px;
+    background-color: var(--laranja);
+    color: var(--texto-inverso);
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 800;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color var(--tempo-curto) var(--movimento), transform var(--tempo-curto) var(--movimento), box-shadow var(--tempo-curto) var(--movimento);
+}
+
+.botao-editar:hover {
+    transform: translateY(-2px);
+    background-color: var(--laranja-hover);
+    box-shadow: var(--sombra-hover);
+}
+
+.botao-editar:focus-visible {
+    outline: 2px solid var(--azul-fechado);
+    outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+    .usuarios {
+        width: calc(100% - 32px);
+        padding: 32px 0 48px;
+    }
+
+    .usuarios-cabecalho {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .usuarios-cabecalho h1 {
+        font-size: 1.65rem;
+    }
+
+    .tabela-container {
+        overflow: visible;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .tabela-container:hover {
+        box-shadow: none;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tbody {
+        display: grid;
+        gap: 12px;
+    }
+
+    tbody tr {
+        padding: 8px 16px;
+        border: 1px solid var(--borda);
+        border-radius: 7px;
+        background-color: var(--superficie);
+        box-shadow: var(--sombra-card);
+    }
+
+    td {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 10px 0;
+        border-top: 0;
+        border-bottom: 1px solid var(--borda);
+        overflow-wrap: anywhere;
+        text-align: right;
+    }
+
+    td::before {
+        color: var(--texto-suave);
+        content: attr(data-label);
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-align: left;
+        text-transform: uppercase;
+    }
+
+    tbody tr td:last-child {
+        border-bottom: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tabela-container,
+    tbody tr,
+    td,
+    .botao-editar {
+        transition: none;
+    }
+}

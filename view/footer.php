@@ -1,3 +1,3 @@
 <footer>
-    <p>&copy; 2026 Minha Loja. Todos os direitos reservados.</p>
+    <p>&copy; 2026 KaBuM! Loja demonstrativa.</p>
 </footer>

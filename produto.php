@@ -1,4 +1,6 @@
-<?php include "./data/produtos.php";
+<?php
+session_start();
+include "./data/produtos.php";
 $id = $_GET['id'] ?? 0;
 
 $produtoSelecionado = null;
@@ -18,9 +20,10 @@ for ($i = 0; $i < count($produtos); $i++) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        Lojinha |
+        KaBuM! |
         <?= $produtoSelecionado ? $produtoSelecionado->nome : "produto não encontrado" ?>
     </title>
+    <link rel="stylesheet" href="./css/tema.css">
     <link rel="stylesheet" href="./css/produto.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/footer.css">
@@ -28,7 +31,7 @@ for ($i = 0; $i < count($produtos); $i++) {
 
 <body>
     <?php include "./view/header.php" ?>
-    <section>
+    <section class="<?= $produtoSelecionado ? 'produto-detalhe' : 'produto-inexistente' ?>">
         <img class="img" src="<?= htmlspecialchars($produtoSelecionado ? $produtoSelecionado->imagem : '') ?>"
             alt="<?= htmlspecialchars($produtoSelecionado ? $produtoSelecionado->nome : 'Produto não encontrado') ?>" decoding="async">
         <div class="container">
@@ -45,7 +48,7 @@ for ($i = 0; $i < count($produtos); $i++) {
                     <p>Marca: <?= $produtoSelecionado ? $produtoSelecionado->marca : "não informada" ?></p>
                 </div>
             </div>
-            <a class="voltar" href="./index.php">← Voltar para a loja</a>
+            <a class="voltar" href="./produtos.php">← Voltar para a loja</a>
         </div>
     </section>
     <?php include "./view/footer.php" ?>

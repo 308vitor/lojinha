@@ -1,24 +1,26 @@
 footer {
     margin-top: auto;
-    background-color: #0b0b0d;
-    color: white;
-    text-align: center;
     padding: 28px 16px;
-    border-top: 2px solid #5e0095;
+    border-top: 1px solid var(--azul-escuro);
+    background-color: var(--azul-fechado);
+    color: var(--texto-inverso);
+    text-align: center;
 }
 
 footer p {
     margin: 0;
-    font-size: 13px;
-    color: #d0d0d0;
+    color: var(--texto-inverso);
+    font-size: 0.82rem;
     line-height: 1.6;
+    opacity: 0.78;
 }
 
 footer p::before {
     display: block;
-    width: 32px;
+    width: 42px;
     height: 3px;
     margin: 0 auto 12px;
-    background-color: #a64cf4;
+    border-radius: 2px;
+    background-color: var(--laranja);
     content: "";
 }

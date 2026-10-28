@@ -1,50 +1,92 @@
 header {
-    position: -webkit-sticky;
     position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
     z-index: 1000;
+    top: 0;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 20px;
-    white-space: nowrap;
-    background-color: #111111;
-    padding: 14px 5%;
-    border-bottom: 2px solid rgba(94, 0, 149, 0.55);
+    justify-content: space-between;
+    gap: 24px;
+    width: 100%;
+    min-height: 76px;
+    padding: 14px max(24px, calc((100% - 1280px) / 2));
+    background-color: var(--azul-fechado);
+    box-shadow: var(--sombra-card);
 }
 
 header h1 {
-    color: white;
-    font-size: 24px;
-    letter-spacing: 0.5px;
+    flex-shrink: 0;
     margin: 0;
+    color: var(--texto-inverso);
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -1.2px;
+}
+
+.marca-loja {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: opacity var(--tempo-curto) var(--movimento), transform var(--tempo-curto) var(--movimento);
+}
+
+.marca-loja:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+.marca-loja h1::first-letter {
+    color: var(--laranja);
+}
+
+.marca-loja:focus-visible {
+    outline: 2px solid var(--laranja);
+    outline-offset: 4px;
 }
 
 header nav {
     display: flex;
+    align-items: center;
     gap: 8px;
 }
 
 header nav a {
-    color: white;
+    position: relative;
+    padding: 10px 12px;
+    border-radius: 4px;
+    color: var(--texto-inverso);
+    font-size: 0.88rem;
+    font-weight: 700;
     text-decoration: none;
-    padding: 8px 10px;
-    border-radius: 5px;
-    transition: color 0.2s ease, background-color 0.2s ease;
+    transition: background-color var(--tempo-curto) var(--movimento), color var(--tempo-curto) var(--movimento), transform var(--tempo-curto) var(--movimento);
 }
 
 header nav a:hover {
-    color: #fff;
-    background-color: rgba(117, 0, 185, 0.55);
+    transform: translateY(-1px);
+    background-color: var(--azul-escuro);
+    color: var(--laranja);
+}
+
+.nav-conta {
+    border: 1px solid var(--laranja);
+    color: var(--texto-inverso);
+}
+
+.nav-conta:hover {
+    background-color: var(--laranja);
+    color: var(--texto-inverso);
+}
+
+header nav a:focus-visible {
+    outline: 2px solid var(--laranja);
+    outline-offset: 2px;
 }
 
 @media (max-width: 600px) {
     header {
         flex-direction: column;
-        gap: 10px;
-        padding: 14px 12px;
+        gap: 8px;
+        padding: 14px 12px 12px;
     }
 
     header nav {
@@ -54,7 +96,7 @@ header nav a:hover {
     }
 
     header nav a {
-        padding: 7px 9px;
-        font-size: 0.9rem;
+        padding: 8px 9px;
+        font-size: 0.82rem;
     }
 }
